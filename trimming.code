@@ -1,0 +1,38 @@
+function trim(triangles) {
+  covers = new List<Cover>();
+  active_fronts = new List<Triangle>();
+  for(triangle in triangles){
+    if (triangle.type == TERMINAL ){
+      Cover cover = new Cover();
+      cover.triangles.add(triangle);
+      front_edge = triangle.get_internal_edge();
+      
+      while(true){
+        if (! inside_circle(front_edge, cover.triangles){
+          cover.front_edge = front_edge;
+          covers.add(cover);
+          break;
+        }
+        triangle = front_edge.get_opposite_triangle(triangle);
+        if (triangle.type == SLEEVE ){
+          front_edge = triangle.get_opposite_internal_edge(front_edge);
+          continue;
+        }
+        else if (triangle.type == JUNCTION]){
+          front_edge.incoming_covers = covers;
+          active_fronts.add(triangle);
+          break;
+        }
+        else if (triangle.type == JUNCTION){
+          cover.front_edge = front_edge;
+          covers.add(cover);
+          break;
+        }
+      }
+    }
+  }
+
+    [ the code block here examines active_fronts one by one and resume trimming. ]
+	[ Cover is the trimming area for a terminal ]
+  return covers;
+}
